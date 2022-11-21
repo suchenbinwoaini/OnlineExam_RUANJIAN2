@@ -42,35 +42,35 @@
               <template slot="title" name="1">
                 <div class="titlei">选择题 (共{{topicCount[0]}}题 共计{{score[0]}}分)</div>
               </template>
-              <div class="contenti">
-                <ul class="question" v-for="(list, index) in topic[1]" :key="index">
-                  <li>{{index+1}}. {{list.question}} {{list.score}}分</li>
-                </ul>
-              </div>
+<!--              <div class="contenti">-->
+<!--                <ul class="question" v-for="(list, index) in topic[1]" :key="index">-->
+<!--                  <li>{{index+1}}. {{list.question}} {{list.score}}分</li>-->
+<!--                </ul>-->
+<!--              </div>-->
             </el-collapse-item>
             <el-collapse-item>
               <template slot="title" name="2">
                 <div class="titlei">填空题 (共{{topicCount[1]}}题  共计{{score[1]}}分)</div>
               </template>
-              <div class="contenti">
-                <ul class="question" v-for="(list, index) in topic[2]" :key="index">
-                  <li>{{topicCount[0]+index+1}}.{{list.question}}  {{list.score}}分</li>
-                </ul>
-              </div>
+<!--              <div class="contenti">-->
+<!--                <ul class="question" v-for="(list, index) in topic[2]" :key="index">-->
+<!--                  <li>{{topicCount[0]+index+1}}.{{list.question}}  {{list.score}}分</li>-->
+<!--                </ul>-->
+<!--              </div>-->
             </el-collapse-item>
             <el-collapse-item>
               <template slot="title" name="3">
                 <div class="titlei">判断题 (共{{topicCount[2]}}题 共计{{score[2]}}分)</div>
               </template>
-              <div class="contenti">
-                <ul class="question" v-for="(list, index) in topic[3]" :key="index">
-                  <li>{{topicCount[0]+topicCount[1]+index+1}}. {{list.question}} {{list.score}}分</li>
-                </ul>
-              </div>
+<!--              <div class="contenti">-->
+<!--                <ul class="question" v-for="(list, index) in topic[3]" :key="index">-->
+<!--                  <li>{{topicCount[0]+topicCount[1]+index+1}}. {{list.question}} {{list.score}}分</li>-->
+<!--                </ul>-->
+<!--              </div>-->
             </el-collapse-item>
           </el-collapse>
         </el-collapse-item>
-        
+
       </el-collapse>
     </div>
     <!--考生须知对话框-->
@@ -201,7 +201,7 @@ export default {
   padding: 5px 10px;
   border: 1px solid #88949b;
   border-radius: 4px;
-} 
+}
 .wrapper .bottom {
   display: flex;
   margin-left: 20px;

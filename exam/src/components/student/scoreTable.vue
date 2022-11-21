@@ -65,6 +65,8 @@ export default {
   methods: {
     getScore() {
       let studentId = this.$cookies.get("cid")
+
+      //请求分数
       this.$axios(`/api/score/${this.pagination.current}/${this.pagination.size}/${studentId}`).then(res => {
         if(res.data.code == 200) {
           this.loading = false //数据加载完成去掉遮罩

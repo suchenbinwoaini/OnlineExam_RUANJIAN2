@@ -7,6 +7,7 @@ import com.exam.entity.Teacher;
 import com.exam.serviceimpl.TeacherServiceImpl;
 import com.exam.util.ApiResultHandler;
 import com.exam.vo.AnswerVO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,6 @@ public class TeacherController {
     public ApiResult findAll(@PathVariable Integer page, @PathVariable Integer size){
         Page<Teacher> teacherPage = new Page<>(page,size);
         IPage<Teacher> teacherIPage = teacherService.findAll(teacherPage);
-
         return ApiResultHandler.buildApiResult(200,"查询所有教师",teacherIPage);
     }
 
@@ -45,5 +45,11 @@ public class TeacherController {
     @PostMapping("/teacher")
     public ApiResult add(@RequestBody Teacher teacher){
         return ApiResultHandler.success(teacherService.add(teacher));
+    }
+
+    @GetMapping("/teacher/a")
+    public ApiResult getPic(){
+        String path = "D:\\github\\SpringBoot-Vue-OnlineExam\\exam\\src\\assets\\logo.png";
+        return ApiResultHandler.success(teacherService.getPic(path));
     }
 }

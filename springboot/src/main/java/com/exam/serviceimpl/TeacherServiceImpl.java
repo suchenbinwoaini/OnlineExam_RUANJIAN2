@@ -8,6 +8,10 @@ import com.exam.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -44,4 +48,18 @@ public class TeacherServiceImpl implements TeacherService {
     public int add(Teacher teacher) {
         return teacherMapper.add(teacher);
     }
+
+//    @Override
+//    public String getPic(String path) throws IOException {
+//        FileInputStream fileInputStream = new FileInputStream(path);
+//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//        byte[] b = new byte[1024];
+//        int len = -1;
+//        while((len = fileInputStream.read(b))!=-1){
+//            bos.write(b,0,len);
+//        }
+//        byte[] fileByte = bos.toByteArray();
+//        BASE64Encoder encoder = new BASE64Encoder();
+//        String data = encoder.encode(fileByte);
+//    }
 }

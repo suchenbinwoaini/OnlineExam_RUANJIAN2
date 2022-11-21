@@ -36,6 +36,7 @@ public interface ExamManageMapper {
      * 查询最后一条记录的paperId,返回给前端达到自增效果
      * @return paperId
      */
+
     @Select("select paperId from exam_manage order by paperId desc limit 1")
     ExamManage findOnlyPaperId();
 }

@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.Teacher;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public interface TeacherService {
@@ -19,4 +21,6 @@ public interface TeacherService {
     public int update(Teacher teacher);
 
     public int add(Teacher teacher);
+
+//    public String getPic(String path) throws IOException;
 }

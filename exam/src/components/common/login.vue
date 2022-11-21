@@ -3,6 +3,26 @@
   <div id="login">
     <div class="bg"></div>
     <el-row class="main-container">
+      <div class="pic-frame">
+    <div class="shell">
+        <ul class="images">
+            <li class="img"></li>
+            <li class="img"></li>
+            <li class="img"></li>
+            <li class="img"></li>
+        </ul>
+        <ul class="min-images">
+            <lin class="min"></lin>
+            <lin class="min"></lin>
+            <lin class="min"></lin>
+            <lin class="min"></lin>
+        </ul>
+        <div class="button">
+            <div class="button-left"><</div>
+            <div class="button-right">></div>
+        </div>
+    </div>
+</div>
       <el-col :lg="8" :xs="16" :md="10" :span="10">
         <div class="top">
           <i class="iconfont icon-kaoshi"></i><span class="title">在线考试系统</span>
@@ -34,7 +54,7 @@
     </el-row>
     <el-row class="footer">
       <el-col>
-        <p class="msg2">版权所有 ©2019 <!--重庆文理学院计科2班余晓江--> 保留所有权利  <a href="http://beian.miit.gov.cn/" target="_blank">渝ICP备19001371号</a></p>
+        <p class="msg2">版权所有 ©2022 战神小队保留所有权利</p>
       </el-col>
     </el-row>
     <section class="remind">
@@ -44,7 +64,6 @@
     </section>
   </div>
 </template>
-
 <script>
 import {mapState} from 'vuex'
 export default {
@@ -107,7 +126,50 @@ export default {
   },
   computed: mapState(["userInfo"]),
   mounted() {
+    let left = document.querySelector('.button-left')
+    let right = document.querySelector('.button-right')
+    let min = document.querySelectorAll('.min')
+    let images = document.querySelector('.images')
+    let index = 0
+    let time
 
+    function position(){
+        images.style.left = (index * -100)+"%"
+    }
+    function add(){
+        if(index>=min.length-1){
+            index = 0;
+        }else {
+            index++
+        }
+    }
+    function desc(){
+        if(index<1){
+            index = min.length-1;
+        }else {
+            index--
+        }
+    }
+    function timer(){
+        time = setInterval(()=>{
+            index++
+            desc()
+            add()
+            position()
+        },3000)
+    }
+    left.addEventListener('click',()=>{
+        desc()
+        position()
+        clearInterval(time)
+        timer()
+    })
+    right.addEventListener('click',()=>{
+        add()
+        position()
+        clearInterval(time)
+        timer()
+    })
   }
 }
 </script>
@@ -195,7 +257,6 @@ a:link {
   justify-content: center;
 }
 .footer {
-  margin-top: 50px;
   text-align: center;
 }
 .footer .msg1 {
@@ -220,4 +281,107 @@ a:link {
 .bottom .options .register span:nth-child(1) {
   color: #8C8C8C;
 }
+body{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(170,190,250);
+}
+ul li{
+    margin-top: 0px;
+    padding-left: 0px;
+    list-style: none;
+}
+.pic-frame{
+    margin-top: 150px;
+    margin-right: 50px;
+}
+.login-frame{
+    width: 500px;
+    height: 400px;
+    border-radius: 5px;
+    border: 10px #fff solid;
+    box-shadow: 20px 30px 20px rgba(0,0,0,.5);
+}
+.shell{
+    width: 500px;
+    height:400px;
+    position: relative;
+    overflow-x: hidden;
+    border-radius: 5px;
+    border: 10px #fff solid;
+    box-shadow: 20px 30px 20px rgba(0,0,0,.5);
+}
+.images{
+    width:400%;
+    height:100%;
+    display: flex;
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    transition: .2s;
+}
+.img{
+    width: 100%;
+    background-size:cover ;
+}
+.img:nth-child(1){
+    background-image: url("../../assets/img/cry1.gif");
+}
+.img:nth-child(2){
+    background-image: url("../../assets/img/cry2.jpg");
+}
+.img:nth-child(3){
+    background-image: url("../../assets/img/good1.jpg");
+}
+.img:nth-child(4){
+    background-image: url("../../assets/img/userimg.png");
+}
+.min-images{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 20px;
+    width: 40%;
+    z-index:999 ;
+    right: 10%;
+}
+.min{
+    width: 30px;
+    height: 30px;
+    cursor:pointer;
+    border-radius: 50%;
+    background-size: cover;
+    border: solid 5px rgba(255,255,255,0.5);
+    background-position: -20px 0;
+}
+.min:nth-child(1){
+    background-image: url("../../assets/img/cry1.gif");
+}
+.min:nth-child(2){
+    background-image: url("../../assets/img/cry2.jpg");
+}
+.min:nth-child(3){
+    background-image: url("../../assets/img/good1.jpg");
+}
+.min:nth-child(4){
+    background-image: url("../../assets/img/userimg.png");
+}
+.button{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+}
+.button-left,.button-right{
+    font-size: 50px;
+    background-color: rgba(100,190,255,0.7);
+    padding: 30px 20px;
+    line-height: 300px;
+    cursor: pointer;
+}
+
 </style>

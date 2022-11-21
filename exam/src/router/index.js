@@ -83,15 +83,21 @@ export default new Router({
       path: '/student',
       component: () => import('@/components/student/index'),
       children: [
-        {path:"/",component: ()=> import('@/components/student/myExam')},
-        {path:'/startExam', component: () => import('@/components/student/startExam')},
-        {path: '/manager', component: () => import('@/components/student/manager')},
-        {path: '/examMsg', component: () => import('@/components/student/examMsg')},
-        {path: '/message', component: () => import('@/components/student/message')},
-        {path: '/studentScore', component: () => import("@/components/student/answerScore")},
-        {path: '/scoreTable', component: () => import("@/components/student/scoreTable")}
+        {path:"/",component: ()=> import('@/components/student/myExam')},//默认界面进入我的考试
+        {path:'/startExam', component: () => import('@/components/student/startExam')},//我的练习界面
+        {path: '/manager', component: () => import('@/components/student/manager')},//修改密码界面
+        {path: '/examMsg', component: () => import('@/components/student/examMsg')},//考试详情界面
+        {path: '/message', component: () => import('@/components/student/message')},//留言
+        {path: '/studentScore', component: () => import("@/components/student/answerScore")},//考完后的查分
+        {path: '/scoreTable', component: () => import("@/components/student/scoreTable")}//
       ]
     },
-    {path: '/answer',component: () => import('@/components/student/answer')}
+    {
+      path: '/answer',
+      component: () => import('@/components/student/answer')},
+    {
+      path:'/a',
+      component: () => import('../components/teacher/watchStudent')
+    }
   ]
 })
